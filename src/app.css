@@ -1,0 +1,100 @@
+
+
+#todolist {
+    width: 480px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 5px 7px 0;
+}
+
+#todolist h1 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+#todo-list {
+    margin-top: 10px;
+}
+
+#todo-list li:last-of-type {
+    border: 0;
+}
+
+#todo-list li {
+    position: relative;/* 用于span.todo-destroy定位 */
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 16px;
+}
+#todo-list .display {
+    padding: 8px;
+}
+
+#todo-list .edit {
+  display: none;
+}
+
+/* 某个todo编辑时 */
+#todo-list .editing .edit {
+    display: block;
+}
+#todo-list .editing .display {
+    display: none;
+}
+
+
+/* checkbox */
+#todo-list .check {
+    margin-right: 5px;
+    vertical-align: text-bottom;
+}
+#todo-list .done .todo-content {
+    text-decoration: line-through;
+    color: #777777;
+}
+
+/* 删除单项 */
+#todo-list .todo-destroy {
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    display: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: url(img/destroy.png) no-repeat 0 0;
+}
+#todo-list li:hover .todo-destroy {
+    display: block;
+}
+#todo-list .todo-destroy:hover {
+    background-position: 0 -20px;
+}
+
+
+#todo-stats {
+    margin-top: 10px;
+}
+#todo-stats:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+#todo-stats .todo-count {
+    float: left;
+}
+#todo-stats .todo-count .number {
+    font-weight: bold;
+}
+#todo-stats .todo-clear {
+    float: right;
+}
+#todo-stats .todo-clear a {
+    font-size: 12px;
+}
+#todo-stats .todo-clear a:hover {
+    color: #336699;
+}
