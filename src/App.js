@@ -23,7 +23,7 @@ export default function App(){
         storage.setItem('todos',JSON.stringify(todo))
     },[data])
 
-    // console.log("app.js");
+    console.log("app.js");
     
   
     return (

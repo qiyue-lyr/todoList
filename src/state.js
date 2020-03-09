@@ -28,7 +28,7 @@ function CompletedShow(props){
     if(completed){
         return (
             <span className="todo-clear">
-                <a href="javascript:;"
+                <a href=""
                 onClick={()=>{
                     data = data.filter(item=>!item.done);
                     setData(data)

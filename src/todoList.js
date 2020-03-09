@@ -2,8 +2,7 @@ import React,{useRef, useEffect} from 'react';
 import { List, Input, Checkbox  } from 'antd';
 
 export default function TodoList(props){
-    
-        // console.log("todoList.js");
+        
         const {data} = props;
 
         return (
@@ -19,20 +18,27 @@ export default function TodoList(props){
 }
 
 function SingleList(props){
-    // console.log("singleList.js");
+    console.log("singleList.js");
 
     let {data,setData,editIndex,setIndex,item} = props;
     const {id,text,done} = item;
     
     const inputEl = useRef(null);
-   
+
+    const fnFlag = useRef(true);
+
+    useEffect(()=>{
+        if(editIndex === id){
+            inputEl.current.input.focus();
+        }          
+    })
+
     const changeTodo=(id,valname,val)=>{
         return data.map(item=>{
             if(item.id === id){
                 item[valname] = val;
             }
             return item;
-            
         });
     }
 
@@ -49,12 +55,9 @@ function SingleList(props){
         setIndex(-1);// -1,没有todo需要编辑
     }
 
-    useEffect(()=>{
-        if(editIndex === id){
-            
-            inputEl.current.input.focus();
-        }   
-    })
+    
+
+    
        
     return (
         /* todo默认样式，done是否完成，editing是否处于可编辑状态 */
@@ -98,20 +101,24 @@ function SingleList(props){
                     className="todo-input" 
                     type="text" 
                     key={id}
-                    defaultValue={text} 
+                    defaultValue={text}  
 
-                    onBlur={(e)=>{
-                        e.target.value = text;
-                        setIndex(-1); 
+                    onBlur={()=>{
+                        if(fnFlag.current){
+                            setIndex(-1);     
+                            inputEl.current.setValue(text);
+                        }
                     }} 
                     onPressEnter={(e)=>{
-                        e.target.onBlur = null;
+                           
                         let val = e.target.value.trim();
                         if(val){
                             changeText(id,val)
                         }else{
                             changeText(id,text)
-                        }                                    
+                        }
+                        fnFlag.current = false; 
+                                                  
                     }}         
                 />
 

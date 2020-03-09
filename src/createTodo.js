@@ -10,6 +10,7 @@ export default function CreateTodo(props){
         let ipt = document.querySelector('#create-todo input');
         ipt && (ipt.value = "")    
     })
+    // console.log('createtodo.js');
     
     return (
         <div id="create-todo">
